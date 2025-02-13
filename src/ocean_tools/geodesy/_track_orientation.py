@@ -1,5 +1,5 @@
 import numpy as np
-from pyinterp.geodetic import System
+from pyinterp.geodetic import Spheroid
 from typing import Dict
 
 from ocean_tools.utilities.reshape import slice_along_axis
@@ -9,7 +9,7 @@ def track_orientation(
     longitude: np.ndarray,
     along_track_axis: int = 0,
     half_width: int = 1,
-    spheroid: System = System()):
+    spheroid: Spheroid = Spheroid()):
     """ Determine angle of satellite track with respect the meridian passing the track.
     
     This method relies on the approximation of the track direction using neighbour points.

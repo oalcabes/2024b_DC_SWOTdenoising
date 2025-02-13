@@ -1,5 +1,5 @@
 """Adapts the distance computation to multiple data shapes."""
-from pyinterp.geodetic import System, coordinate_distances
+from pyinterp.geodetic import Spheroid, coordinate_distances
 import numpy as np
 from ocean_tools.utilities.reshape import slice_along_axis
 
@@ -70,7 +70,7 @@ def _spheroid_distances_along_axis(
     longitudes: np.ndarray,
     latitudes: np.ndarray,
     axis: int = 0,
-    wgs: System = System()):
+    wgs: Spheroid = Spheroid()):
     # Slice along axis to compute distance point to point    
     lon0 = slice_along_axis(longitudes, axis, slice(0, -1))
     lon1 = slice_along_axis(longitudes, axis, slice(1, None))
@@ -91,7 +91,7 @@ def _great_circle_distance_along_axis(
     longitudes: np.ndarray,
     latitudes: np.ndarray,
     axis: int = 0,
-    wgs: System = System()):
+    wgs: Spheroid = Spheroid()):
 
     longitudes = np.radians(longitudes)
     latitudes = np.radians(latitudes)
